@@ -76,13 +76,17 @@ if (LG_BLOCK_CUSTOM) {
     include LG_CUSTOM_HTML;
     $templateData['custom_html'] = ob_get_clean();
 
-    ob_start();
-    include LG_CUSTOM_HEADER_PHP;
-    $templateData['custom_header'] = ob_get_clean();
-    
-    ob_start();
-    include LG_CUSTOM_FOOTER_PHP;
-    $templateData['custom_footer'] = ob_get_clean();
+    if (defined('LG_CUSTOM_HEADER_PHP')) {
+        ob_start();
+        include LG_CUSTOM_HEADER_PHP;
+        $templateData['custom_header'] = ob_get_clean();
+    }
+
+    if (defined('LG_CUSTOM_FOOTER_PHP')) {
+        ob_start();
+        include LG_CUSTOM_FOOTER_PHP;
+        $templateData['custom_footer'] = ob_get_clean();
+    }
 }
 
 if (LG_CHECK_LATENCY && filter_var(LookingGlass::detectIpAddress(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
