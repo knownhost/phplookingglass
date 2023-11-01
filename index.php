@@ -109,7 +109,7 @@ $templateData['csrfToken'] = $_SESSION[LookingGlass::SESSION_CSRF] = bin2hex(ran
 </head>
 <body>
 
-<?php echo $templateData['custom_header'] ?>
+<?php echo isset($templateData['custom_header']) ? $templateData['custom_header'] : '' ?>
 
 <div class="col-lg-6 mx-auto p-3 py-md-5">
 
@@ -288,7 +288,7 @@ $templateData['csrfToken'] = $_SESSION[LookingGlass::SESSION_CSRF] = bin2hex(ran
     </footer>
 </div>
 
-<?php echo $templateData['custom_footer'] ?>
+<?php echo isset($templateData['custom_footer']) ? $templateData['custom_footer'] : '' ?>
 
 <?php if ($templateData['session_call_backend']): ?>
 <script type="text/javascript">
