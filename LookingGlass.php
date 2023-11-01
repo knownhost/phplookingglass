@@ -74,6 +74,12 @@ class LookingGlass
         if (!defined('LG_CUSTOM_PHP')) {
             die('LG_CUSTOM_PHP not found in config.php');
         }
+        if (!defined('LG_CUSTOM_HEADER_PHP')) {
+            die('LG_CUSTOM_HEADER_PHP not found in config.php');
+        }
+        if (!defined('LG_CUSTOM_FOOTER_PHP')) {
+            die('LG_CUSTOM_FOOTER_PHP not found in config.php');
+        }
         if (!defined('LG_LOCATION')) {
             die('LG_LOCATION not found in config.php');
         }

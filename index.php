@@ -75,6 +75,14 @@ if (LG_BLOCK_CUSTOM) {
     ob_start();
     include LG_CUSTOM_HTML;
     $templateData['custom_html'] = ob_get_clean();
+
+    ob_start();
+    include LG_CUSTOM_HEADER_PHP;
+    $templateData['custom_header'] = ob_get_clean();
+    
+    ob_start();
+    include LG_CUSTOM_FOOTER_PHP;
+    $templateData['custom_footer'] = ob_get_clean();
 }
 
 if (LG_CHECK_LATENCY && filter_var(LookingGlass::detectIpAddress(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
@@ -96,6 +104,8 @@ $templateData['csrfToken'] = $_SESSION[LookingGlass::SESSION_CSRF] = bin2hex(ran
     <?php if ($templateData['custom_head']) { echo $templateData['custom_head']; } ?>
 </head>
 <body>
+
+<?php echo $templateData['custom_header'] ?>
 
 <div class="col-lg-6 mx-auto p-3 py-md-5">
 
@@ -273,6 +283,8 @@ $templateData['csrfToken'] = $_SESSION[LookingGlass::SESSION_CSRF] = bin2hex(ran
         <a href="https://github.com/hybula/lookingglass" target="_blank" class="float-end"><img src="https://img.shields.io/github/stars/hybula/lookingglass?style=social" alt="GitHub"></a>
     </footer>
 </div>
+
+<?php echo $templateData['custom_footer'] ?>
 
 <?php if ($templateData['session_call_backend']): ?>
 <script type="text/javascript">
